@@ -1,4 +1,4 @@
-return (function(game)
+return (function(games)
     local gitrequest = function(file)
         return game.HttpGet(game, 'https://raw.githubusercontent.com/QP-Community/test/main/'..scripturl, true)
     end
@@ -26,5 +26,5 @@ return (function(game)
 		end,
 		HoverText = 'Make you can jump any place'
 	})
-    loadstring(gitrequest(game.. '.lua'))()
+    loadstring(gitrequest(games.. '.lua'))()
 end)
