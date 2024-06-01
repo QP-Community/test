@@ -1,7 +1,4 @@
 return (function(games)
-    local gitrequest = function(scripturl)
-        return game.HttpGet(game, 'https://raw.githubusercontent.com/QP-Community/test/main/'..scripturl, true)
-    end
     if not isfile('theme.lua') then
         writefile('theme.lua', 'Luna')
     end
@@ -29,5 +26,5 @@ return (function(games)
 		end,
 		HoverText = 'keep changing it buddy!'
 	})
-    loadstring(gitrequest('modules/'.. games .. '.lua'))()
+    return loadstring(game.HttpGet('https://raw.githubusercontent.com/QP-Community/test/main/modules/'.. games .. '.lua'))()
 end)
