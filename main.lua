@@ -8,7 +8,7 @@ return (function(games)
     local kavo = loadstring(game.HttpGet(game, 'https://raw.githubusercontent.com/NTDCore/NightbedForRoblox/main/Core/kavo.lua'))()
     shared.guilib = kavo
     local win = kavo:CreateWindow({
-        Name = 'QP | '.. tostring(game),
+        Name = 'QP | '.. games,
         Theme = readfile('theme.lua') or 'Luna'
     })
     local tabs = {
@@ -16,8 +16,7 @@ return (function(games)
         Settings = win.CreateTab('Settings')
     }
     shared.tab = tabs
-    local themechanger = tabs.CreateSection('Theme')
-    local InfiniteJump = {Enabled = false}
+    local themechanger = tabs.Settings.CreateSection('Theme')
 	themechanger.CreateDropdown({
 		Name = 'Theme',
         List = {'DarkTheme', 'LightTheme', 'BloodTheme', 'GrapeTheme', 'Ocean', 'Midnight', 'Sentinel', 'Vape', 'Luna', 'Private', 'Synapse', 'Serpent'},
