@@ -37,9 +37,7 @@ getBadges = object.Badges.CreateToggle({
     HoverText = 'Automatically Get All Badges for you'
 })
 
-local InstantInteract = {
-    Connections = {}
-}
+local InstantInteract = {}
 local FireAllProximity = {}
 InstantInteract = object.Interaction.CreateToggle({
     Name = 'InstantInteract',

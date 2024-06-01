@@ -1,11 +1,12 @@
 return (function(games)
-    local gitrequest = function(file)
+    local gitrequest = function(scripturl)
         return game.HttpGet(game, 'https://raw.githubusercontent.com/QP-Community/test/main/'..scripturl, true)
     end
     if not isfile('theme.lua') then
         writefile('theme.lua', 'Luna')
     end
-    local kavo = loadstring(game.HttpGet(game, 'https://raw.githubusercontent.com/NTDCore/NightbedForRoblox/main/Core/kavo.lua'))()
+    local kavo = loadstring(game.HttpGet(game, 'https://raw.githubusercontent.com/MaxlaserTechAlt/funny-script/main/core/gui.lua'))()
+    local themes = shared.kavothemes
     shared.guilib = kavo
     local win = kavo:CreateWindow({
         Name = 'QP | '.. games,
@@ -22,8 +23,11 @@ return (function(games)
         List = {'DarkTheme', 'LightTheme', 'BloodTheme', 'GrapeTheme', 'Ocean', 'Midnight', 'Sentinel', 'Vape', 'Luna', 'Private', 'Synapse', 'Serpent'},
 		Function = function(val)
             writefile('theme.lua', val)
+            for i,v in themes[val] do
+                kavo:ChangeColor(v)
+            end
 		end,
-		HoverText = 'Make you can jump any place'
+		HoverText = 'keep changing it buddy!'
 	})
-    loadstring(gitrequest(games.. '.lua'))()
+    loadstring(gitrequest('modules/'.. games .. '.lua'))()
 end)
