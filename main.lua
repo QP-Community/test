@@ -1,32 +1,23 @@
-return (function(games)
-    if not isfile('theme.lua') then
-        writefile('theme.lua', 'Luna')
+return (function(name)
+    local githubrequest = function(url)
+        return game.HttpGet(game, 'https://raw.githubusercontent.com/QP-Community/test/main/modules/'.. url, true)
     end
-    local kavo = loadstring(game.HttpGet(game, 'https://raw.githubusercontent.com/MaxlaserTechAlt/funny-script/main/core/gui.lua'))()
-    local themes = shared.kavothemes
-    shared.guilib = kavo
-    local win = kavo:CreateWindow({
-        Name = 'QP | '.. tostring(games) or 'unknown',
-        Theme = readfile('theme.lua') or 'Luna'
-    })
-    shared.window = win
-    local tabs = {
-        Main = win.CreateTab('Main'),
-        Settings = win.CreateTab('Settings')
-    }
-    
-    local themechanger = tabs.Settings.CreateSection('Theme')
-	themechanger.CreateDropdown({
-		Name = 'Theme',
-        List = {'DarkTheme', 'LightTheme', 'BloodTheme', 'GrapeTheme', 'Ocean', 'Midnight', 'Sentinel', 'Vape', 'Luna', 'Private', 'Synapse', 'Serpent'},
-		Function = function(val)
-            writefile('theme.lua', val)
-            for i,v in themes[val] do
-                kavo:ChangeColor(v)
-            end
-		end,
-		HoverText = 'keep changing it buddy!'
-	})
-    shared.tab = tabs
-    return loadstring(game.HttpGet(game, 'https://raw.githubusercontent.com/QP-Community/test/main/modules/'.. games .. '.lua'))()
+    shared.universal = false
+    if not isfolder('QP') then
+        makefolder('QP')
+    end
+    if not isfolder('QP/modules') then
+        makefolder('QP/modules')
+    end
+    if not isfolder('QP/settings') then
+        makefolder('QP/settings')
+    end
+    if not isfile('QP/theme.json') then
+        writefile('QP/theme.json', '')
+    end
+    task.spawn(function()
+        loadstring(githubrequest('universal.lua'))()
+        repeat task.wait() until shared.universal
+        loadstring(githubrequest(tostring(game)))()
+    end)
 end)

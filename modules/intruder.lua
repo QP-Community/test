@@ -4,8 +4,9 @@ local lplr = playerService.LocalPlayer
 local promptService = cloneref(game.FindService(game, 'ProximityPromptService'))
 local replicatedStorage = cloneref(game.FindService(game, 'ReplicatedStorage'))
 
-local gui = shared.guilib
-local tabs = shared.tab
+local gui = shared.gui
+local win = shared.win
+local tabs = shared.tabs
 local object = {
     noStatic = tabs.Main.CreateSection('Static'),
     Badges = tabs.Main.CreateSection('Badges'),
@@ -46,10 +47,6 @@ InstantInteract = object.Interaction.CreateToggle({
             table.insert(InstantInteract.Connections, promptService.PromptButtonHoldBegan:Connect(function(v)
                 fireproximityprompt(v)
             end))
-        else
-            for i,v in InstantInteract.Connections do
-                v:Disconnect()
-            end
         end
     end,
     HoverText = 'Instant Interact everything'
