@@ -27,9 +27,6 @@ themechanger.CreateDropdown({
     Function = function(val)
         theme = val
         writefile('QP/theme.json', game.FindService(game, 'HttpService'):JSONEncode(theme))
-        for i,v in themes[val] do
-            gui:ChangeColor(v)
-        end
     end,
     HoverText = 'keep changing it buddy!'
 })
