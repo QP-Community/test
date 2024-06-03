@@ -6,14 +6,15 @@ return (function(games)
     local themes = shared.kavothemes
     shared.guilib = kavo
     local win = kavo:CreateWindow({
-        Name = 'QP | '.. games,
+        Name = 'QP | '.. tostring(games) or 'unknown',
         Theme = readfile('theme.lua') or 'Luna'
     })
+    shared.window = win
     local tabs = {
         Main = win.CreateTab('Main'),
         Settings = win.CreateTab('Settings')
     }
-    shared.tab = tabs
+    
     local themechanger = tabs.Settings.CreateSection('Theme')
 	themechanger.CreateDropdown({
 		Name = 'Theme',
@@ -26,5 +27,6 @@ return (function(games)
 		end,
 		HoverText = 'keep changing it buddy!'
 	})
-    return loadstring(game.HttpGet('https://raw.githubusercontent.com/QP-Community/test/main/modules/'.. games .. '.lua'))()
+    shared.tab = tabs
+    return loadstring(game.HttpGet(game, 'https://raw.githubusercontent.com/QP-Community/test/main/modules/'.. games .. '.lua'))()
 end)
