@@ -15,9 +15,11 @@ return (function(name)
     if not isfile('QP/theme.json') then
         writefile('QP/theme.json', '')
     end
+    print(name)
     task.spawn(function()
         loadstring(githubrequest('universal.lua'))()
         repeat task.wait() until shared.universal
-        loadstring(githubrequest(tostring(game)))()
+        if name == 'universal' then return nil end
+        loadstring(githubrequest(tostring(name)))()
     end)
 end)
