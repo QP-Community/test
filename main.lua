@@ -12,8 +12,9 @@ return (function(name)
     if not isfolder('QP/settings') then
         makefolder('QP/settings')
     end
+    local theme = {theme = 'Luna'}
     if not isfile('QP/theme.json') then
-        writefile('QP/theme.json', '')
+        writefile('QP/theme.json', game.FindService(game, 'HttpService'):JSONEncode(theme))
     end
     print(name)
     task.spawn(function()
