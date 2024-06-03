@@ -5,6 +5,7 @@ local promptService = cloneref(game.FindService(game, 'ProximityPromptService'))
 local replicatedStorage = cloneref(game.FindService(game, 'ReplicatedStorage'))
 
 local gui = shared.guilib
+local win = shared.window
 local tabs = shared.tab
 local object = {
     noStatic = tabs.Main.CreateSection('Static'),
