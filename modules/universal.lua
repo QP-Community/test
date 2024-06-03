@@ -5,9 +5,9 @@ promptService = cloneref(game:FindService('ProximityPromptService'))
 replicatedStorage = cloneref(game:FindService('ReplicatedStorage'))
 
 gui = loadstring(game.HttpGet(game, 'https://raw.githubusercontent.com/MaxlaserTechAlt/funny-script/main/core/gui.lua'))()
-win = kavo:CreateWindow({
+win = gui:CreateWindow({
     Name = 'QP Scripts',
-    Theme = readfile('theme.lua') or 'Luna'
+    Theme = readfile('QP/theme.lua') or 'Luna'
 })
 tabs = {
     Main = win.CreateTab('Main'),
@@ -24,7 +24,7 @@ themechanger.CreateDropdown({
     Function = function(val)
         writefile('QP/theme.lua', val)
         for i,v in themes[val] do
-            kavo:ChangeColor(v)
+            gui:ChangeColor(v)
         end
     end,
     HoverText = 'keep changing it buddy!'
