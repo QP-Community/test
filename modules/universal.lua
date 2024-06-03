@@ -1,5 +1,5 @@
 cloneref = cloneref or function(obj) return obj end
-playerService = cloneref(game.FindService('Players'))
+playerService = cloneref(game.FindService(game, 'Players'))
 lplr = playerService.LocalPlayer
 promptService = cloneref(game:FindService('ProximityPromptService'))
 replicatedStorage = cloneref(game:FindService('ReplicatedStorage'))
